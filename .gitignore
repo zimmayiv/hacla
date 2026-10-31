@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.DS_Store
+_site/
+
+# Raw downloads stay local: they are large, and the extracts contain site managers' contact details and resident stories.
+data/raw/*
+!data/raw/README.md

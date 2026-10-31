@@ -1,0 +1,13 @@
+{% macro src(f) %}{% if f and f.source_url %}<a class="src ev-{{ f.evidence or 'structured_data' }}" href="{{ f.source_url }}" target="_blank" rel="noopener" title="{{ f.source_title }}{% if f.page %}, p. {{ f.page }}{% endif %}&#10;{{ f.evidence_label }}{% if f.quote %}&#10;&#10;“{{ f.quote }}”{% endif %}">{{ 'source' if f.evidence in ('document_text','structured_data','document_image',None) else (f.evidence|replace('_',' ')) }}{% if f.page %} p.{{ f.page }}{% endif %}</a>{% endif %}{% endmacro %}
+
+{% macro board_panel(b) %}
+{% if b.no_board_note %}<p class="note">{{ b.no_board_note }}</p>{% if b.governed_by %}<p class="sub">Governing board, {{ b.governed_by.entity }}:</p>{{ board_panel(b.governed_by) }}{% endif %}
+{% else %}
+{% if b.directors or b.officers %}<table><thead><tr><th>Name</th><th>Seat</th><th>Role at HACLA</th><th>As of</th><th>Source</th></tr></thead><tbody>
+{% for s in b.directors + b.officers %}<tr><td><a href="{{ url_for('person', slug=s.person|slug) }}">{{ s.person }}</a>{% if s.note %}<div class="sub">{{ s.note }}</div>{% endif %}</td><td class="sub">{{ 'Chair' if s.is_chair else s.seat|capitalize }}</td><td class="sub">{{ s.hacla_role or '' }}</td><td class="sub">{{ s.as_of or '' }}</td><td>{{ src(s) }}</td></tr>{% endfor %}
+</tbody></table>{% else %}<p class="note">No roster found for this board.</p>{% endif %}
+{% if b.former %}<p class="sub">Former: {% for s in b.former %}<a href="{{ url_for('person', slug=s.person|slug) }}">{{ s.person }}</a> ({{ s.seat }}{% if s.end_date %}, until {{ s.end_date }}{% endif %}){{ ', ' if not loop.last }}{% endfor %}</p>{% endif %}
+{% if b.open_question %}<p class="note">{{ b.open_question }}</p>{% endif %}
+{% if b.rule %}<p class="sub">{{ b.rule }} {% if b.rule_url %}<a class="src" href="{{ b.rule_url }}" target="_blank" rel="noopener" title="“{{ b.rule_quote }}”">source</a>{% endif %}</p>{% endif %}
+{% endif %}
+{% endmacro %}

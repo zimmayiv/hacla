@@ -1,0 +1,46 @@
+{% extends "base.html" %}{% from "_macros.html" import src, board_panel %}{% block title %}{{ h.name }} · HACLA Holdings{% endblock %}{% block body %}
+<p class="crumb"><a href="{{ url_for('index') }}">Holdings</a></p>
+<h1>{{ h.name }}</h1>
+<p class="lede">{{ h.relationship|label }} · {{ h.status|label }} {{ src(h) }}</p>
+{% if h.issues %}<div class="warn"><strong>Source conflicts or caveats</strong><ul>{% for i in h.issues %}<li>{{ i.text }} {{ src(i) }}</li>{% endfor %}</ul></div>{% endif %}
+<div class="grid">
+<section><h2>At a glance</h2><dl>
+<dt>Units</dt><dd>{{ h.total_units if h.total_units is not none else 'Not stated' }}{% if h.low_income_units %} ({{ h.low_income_units }} low-income){% endif %}</dd>
+<dt>Bedroom mix</dt><dd>{% set mix = [('Studio',h.br0),('1BR',h.br1),('2BR',h.br2),('3BR',h.br3),('4BR',h.br4)] %}{% for n,v in mix if v %}{{ n }}: {{ v }}{{ ', ' if not loop.last }}{% else %}Not stated{% endfor %}</dd>
+<dt>Programs</dt><dd>{{ h.programs|join(', ') or 'Not stated' }}</dd>
+<dt>Population</dt><dd>{{ h.population or 'Not stated' }}</dd>
+<dt>Built</dt><dd>{{ h.year_built or 'Unknown' }}{% if h.year_built_basis %} <span class="sub">({{ h.year_built_basis }})</span>{% endif %}</dd>
+<dt>Acquired</dt><dd>{{ h.acquired_date or 'Not documented' }}{% if h.acquired_basis %} <span class="sub">({{ h.acquired_basis }})</span>{% endif %}</dd>
+<dt>Owner</dt><dd>{{ h.owner_name }}{% if h.ownership_status != 'documented' %} <span class="tag">{{ h.ownership_status|label }}</span>{% endif %}</dd>
+<dt>Manager</dt><dd>{{ h.manager or 'Not stated' }}</dd>
+<dt>Council district</dt><dd>{{ h.council_district or 'Not available' }}</dd>
+{% if h.hud_code %}<dt>HUD code</dt><dd>{{ h.hud_code }}</dd>{% endif %}
+{% if h.ctcac_apps %}<dt>CTCAC</dt><dd>{{ h.ctcac_apps }}</dd>{% endif %}
+</dl></section>
+<section><h2>Sources for this holding</h2><ul class="sources">{% for s in h.sources %}<li><a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.title }}</a><span class="sub"> {{ s.date or '' }} · {{ s.facts }} fact{{ 's' if s.facts != 1 }}</span></li>{% endfor %}</ul></section>
+</div>
+<h2>Capital stack</h2>
+{% if h.financing %}{% set stacks = h.financing|map(attribute='stack')|unique|list %}
+<div class="scroll"><table><thead><tr><th>Item</th><th>Type</th><th>Phase</th><th class="num">Amount</th><th>Date</th><th>Terms</th><th>Source</th></tr></thead><tbody>
+{% for f in h.financing %}<tr><td>{{ f.label }}{% if f.provider %}<div class="sub">{{ f.provider }}</div>{% endif %}{% if f.note %}<div class="sub">{{ f.note }}</div>{% endif %}{% if f.n_holdings > 1 %}<span class="tag">Portfolio, {{ f.n_holdings }} properties</span>{% endif %}{% if f.status %} <span class="tag">{{ f.status }}</span>{% endif %}</td><td class="sub">{{ f.kind|label }}</td><td class="sub">{{ f.phase or '' }}{% if f.stack %}<div>{{ f.stack }}</div>{% endif %}</td><td class="num">{{ f.amount|money }}</td><td class="sub">{{ f.date or '' }}</td><td class="sub">{{ f.rate or '' }}{% if f.maturity %} due {{ f.maturity }}{% endif %}</td><td>{{ src(f) }}</td></tr>{% endfor %}
+</tbody></table></div>
+{% for r in h.reports %}<p class="sub">{{ r.app }} permanent sources total {{ r.permanent_total|money }}, reconciled to the staff report. {{ src(r) }}</p>{% endfor %}
+{% else %}<p class="note">No property-level financing found in the sources reviewed.</p>{% endif %}
+<div class="grid">
+<section><h2>Income restrictions</h2>
+{% if h.ami %}<table><thead><tr><th class="num">AMI</th><th class="num">Units</th><th>Type</th><th>Source</th></tr></thead><tbody>{% for a in h.ami %}<tr><td class="num">{{ a.ami_pct }}%</td><td class="num">{{ a.units if a.units is not none else '' }}</td><td class="sub">{{ a.restriction_type|label }}{% if a.note %}<div>{{ a.note }}</div>{% endif %}</td><td>{{ src(a) }}</td></tr>{% endfor %}</tbody></table>
+{% else %}<p class="note">No AMI tiers published in the sources reviewed.{% if 'Market Rate' in h.programs %} HACLA's portfolio page describes Market Rate units as not income restricted.{% elif 'Public Housing' in h.programs %} Public housing tenant income data is below.{% endif %}</p>{% endif %}
+{% if h.resident_stats %}{% set s = h.resident_stats %}<h3>Current residents (HUD) {{ src(s) }}</h3><dl><dt>Occupied</dt><dd>{{ s.occupied }} ({{ s.pct_occupied }}%)</dd><dt>Average household income</dt><dd>{{ s.avg_household_income|money }}</dd><dt>Under 30% of median</dt><dd>{{ s.pct_under_30_ami }}%</dd><dt>Under 50% of median</dt><dd>{{ s.pct_under_50_ami }}%</dd><dt>Average tenant rent</dt><dd>{{ s.avg_tenant_rent|money }}/month</dd><dt>Head of household 62+</dt><dd>{{ s.pct_age_62_plus }}%</dd><dt>As of</dt><dd>{{ s.as_of }}</dd></dl>{% endif %}
+</section>
+<section><h2>Governance and partners</h2>
+{% if h.roles %}<table><thead><tr><th>Party</th><th>Role</th><th>Source</th></tr></thead><tbody>{% for r in h.roles %}<tr><td>{% if r.entity_id %}<a href="{{ url_for('entity', entity_id=r.entity_id) }}">{{ r.entity_name }}</a>{% else %}{{ r.entity_name }}{% endif %}{% if r.note and not r.note.startswith('CA-') %}<div class="sub">{{ r.note }}</div>{% endif %}</td><td class="sub">{{ r.role|label }}</td><td>{{ src(r) }}</td></tr>{% endfor %}</tbody></table>
+{% else %}<p class="note">No property-level ownership record found. HACLA reports aggregate counts for LOMOD South and New Vision but does not itemize them publicly.</p>{% endif %}
+</section></div>
+{% if h.governance %}<h2>Who governs the holding entities</h2>{% for g in h.governance %}<h3><a href="{{ url_for('entity', entity_id=g.entity_id) }}">{{ g.entity }}</a> <span class="sub">{{ g.role|label }}</span></h3>{{ board_panel(g) }}{% endfor %}{% endif %}
+<div class="grid">
+<section><h2>Timeline</h2>{% if h.events %}<ul class="timeline">{% for e in h.events %}<li><strong>{{ e.date }}</strong> {{ e.event_type|label }}{% if e.note and not e.note.startswith('CA-') %} <span class="sub">{{ e.note }}</span>{% endif %} {{ src(e) }}</li>{% endfor %}</ul>{% else %}<p class="note">No dated events found.</p>{% endif %}</section>
+<section><h2>Notes</h2>{% if h.notes %}<ul>{% for n in h.notes %}<li>{{ n.text }} {{ src(n) }}</li>{% endfor %}</ul>{% else %}<p class="note">None.</p>{% endif %}</section>
+</div>
+<h2>Sites</h2><div class="scroll"><table><thead><tr><th>Address</th><th class="num">Units</th><th>APN</th><th class="num">Assessor year built</th><th class="num">Land base year*</th><th>Links</th></tr></thead><tbody>{% for s in h.sites %}<tr><td>{{ s.address }}<div class="sub">{{ s.city or '' }} {{ s.zip or '' }}</div></td><td class="num">{{ s.units if s.units is not none else '' }}</td><td>{{ s.apn or '' }}</td><td class="num">{{ s.year_built or '' }}</td><td class="num">{{ s.land_base_year or '' }}</td><td>{% if s.assessor_url %}<a href="{{ s.assessor_url }}" target="_blank" rel="noopener">Assessor</a> {% endif %}{% if s.lat %}<a href="https://www.openstreetmap.org/?mlat={{ s.lat }}&mlon={{ s.lon }}#map=18/{{ s.lat }}/{{ s.lon }}" target="_blank" rel="noopener">Map</a> {% endif %}{{ src(s) }}</td></tr>{% endfor %}</tbody></table></div>
+<p class="sub">*The year of the parcel's last land reassessment. Often a sign of a change in ownership, but not an acquisition date.</p>
+{% endblock %}

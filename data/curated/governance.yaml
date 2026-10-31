@@ -1,0 +1,83 @@
+# Boards and officers. Rosters are stated per document, so each seat carries its own source and as-of date.
+people:
+  Cielo Castro: Commissioner; Chair of the Board of Commissioners
+  Delfino De La Cruz Jr.: Commissioner
+  Alexandra Suh: Former Commissioner (resigned June 2025)
+  Aileen Morales: Commissioner (appointed 7/1/2025)
+  Aaron Thomas: Commissioner (appointed 9/17/2025)
+  Adam Demuyakor: Commissioner
+  Lucelia Hooper: Commissioner
+  Marlene Garza: Chief Administrative Officer; Interim President & CEO in 2024
+  Jenny Scanlin: Chief Development Officer
+  Lourdes Castro Ramirez: President & CEO
+  Tina Smith-Booth: Director of Asset Management
+  Patricia Kataura: Director of Finance
+  Lisette Belon: Former Secretary; HACLA Asset Manager
+  Eric Chang: Deputy Director of Asset Management
+  Connie Loyola Calumnag: Director of Los Angeles LOMOD
+  Armine Petrosyan: HACLA staff
+  Hang Phan: HACLA staff
+
+# Added to the entities in facts.yaml.
+new_entities:
+  - {id: lomod-bunker-hill, name: LOMOD Bunker Hill Housing Development Corporation, source: boc_bylaws_2025, quote: "LOMOD Bunker Hill Housing Development"}
+  - {id: anchor-of-hope, name: "Anchor of Hope Housing, Inc.", source: boc_form_2025_12, quote: "Anchor of Hope Housing, Inc."}
+  - {id: bright-horizon, name: "Bright Horizon Housing, Inc.", source: boc_form_2025_12, quote: "Bright Horizon Housing, Inc."}
+  - {id: building-blocks, name: "Building Blocks Housing, Inc.", source: boc_form_2025_12, quote: "Building Blocks Housing, Inc."}
+  - {id: cornerstone-homes, name: "Cornerstone Affordable Homes, Inc.", source: boc_form_2025_12, quote: "Cornerstone Affordable Homes, Inc."}
+  - {id: everhome, name: "EverHome Communities, Inc.", source: boc_form_2025_12, quote: "EverHome Communities, Inc."}
+  - {id: habitat-forward, name: "Habitat Forward, Inc.", source: boc_form_2025_12, quote: "Habitat Forward, Inc."}
+  - {id: heart-of-la, name: "Heart of LA Housing, Inc.", source: boc_form_2025_12, quote: "Heart of LA Housing, Inc."}
+  - {id: la-roots, name: "LA Roots Housing, Inc.", source: boc_form_2025_12, quote: "LA Roots Housing, Inc."}
+  - {id: safe-harbor-homes, name: "Safe Harbor Homes, Inc.", source: boc_form_2025_12, quote: "Safe Harbor Homes, Inc."}
+  - {id: steppingstone, name: Steppingstone Communities Corporation, source: boc_form_2025_12, quote: "Steppingstone"}
+
+standard_rule: "Five directors, at least three of them sitting commissioners, all appointed by the Chair of HACLA's Board of Commissioners, who also names the board's chair. Only commissioners and HACLA's CEO, Chief Programs, Chief Administrative and Chief Strategic Development officers are eligible."
+standard_rule_source: {source: boc_bylaws_2025, quote: "The number of Directors shall be five (5), at least three (3) of whom shall be current members of the Board of Commissioners"}
+standard_rule_entities: [la-cienega, lomod-bunker-hill, hoc, lomod-south, s8-lomods, new-vision, lomod-west, hillhaven-lomod, soto-lomod, lafayette-cc, oakwood-community, mclaughlin-village, maida-sepulveda, rampart-village, hofa, housing-pathways, finding-hope, hope-to-house, key-to-housing, new-way-home, vision-home]
+
+# Roster statements: each entity listed took these people as directors from this document.
+rosters:
+  - {source: ar_new_vision, entities: [new-vision], people: [Cielo Castro, Alexandra Suh, Delfino De La Cruz Jr., Jenny Scanlin, Marlene Garza], chair: Cielo Castro}
+  - {source: ar_lomod_south, entities: [lomod-south], people: [Cielo Castro, Alexandra Suh, Delfino De La Cruz Jr., Jenny Scanlin, Marlene Garza], chair: Cielo Castro}
+  - {source: ar_la_cienega, entities: [la-cienega], people: [Cielo Castro, Alexandra Suh, Delfino De La Cruz Jr., Jenny Scanlin, Marlene Garza], chair: Cielo Castro}
+  - {source: ar_hoc, entities: [hoc], people: [Cielo Castro, Alexandra Suh, Delfino De La Cruz Jr., Jenny Scanlin, Marlene Garza], chair: Cielo Castro}
+  - {source: ar_lomod_west, entities: [lomod-west], people: [Cielo Castro, Alexandra Suh, Delfino De La Cruz Jr., Jenny Scanlin, Marlene Garza], chair: Cielo Castro}
+  - {source: ar_section8, entities: [s8-lomods], people: [Cielo Castro, Alexandra Suh, Delfino De La Cruz Jr., Jenny Scanlin, Marlene Garza], chair: Cielo Castro}
+  - {source: boc_clarendon, entities: [housing-pathways], people: [Cielo Castro, Alexandra Suh, Delfino De La Cruz Jr., Jenny Scanlin, Marlene Garza]}
+  - {source: boc_form_2024_03, entities: [hofa, rampart-village], people: [Cielo Castro, Alexandra Suh, Delfino De La Cruz Jr., Jenny Scanlin, Marlene Garza], chair: Cielo Castro, initial: true}
+  - {source: boc_form_2024_01, entities: [oakwood-community, mclaughlin-village, maida-sepulveda], people: [Cielo Castro, Alexandra Suh, Delfino De La Cruz Jr., Jenny Scanlin, Marlene Garza], chair: Cielo Castro, initial: true}
+  - {source: boc_form_2025_01, entities: [finding-hope, hope-to-house, key-to-housing, new-way-home, vision-home], people: [Cielo Castro, Alexandra Suh, Delfino De La Cruz Jr., Jenny Scanlin, Marlene Garza], initial: true}
+  - {source: boc_form_2025_12, entities: [anchor-of-hope, bright-horizon, building-blocks, cornerstone-homes, everhome, habitat-forward, heart-of-la, la-roots, safe-harbor-homes, steppingstone], people: [Cielo Castro, Delfino De La Cruz Jr., Jenny Scanlin, Marlene Garza], initial: true, note: "The resolution as published leaves the fifth director's name blank."}
+  - {source: la_lomod_minutes_2026, entities: [la-lomod], people: [Lourdes Castro Ramirez, Delfino De La Cruz Jr., Aileen Morales]}
+
+# Name as printed in a source, where it differs from the person's key.
+quote_names: {Delfino De La Cruz Jr.: Delfino De La Cruz}
+
+suh_resignation: {date: "2025-06", source: boc_bylaws_2025, quote: "In June 2025, Commissioner Alexandra Suh, resigned from the HACLA BOC"}
+vacancy_fill_entities: [la-cienega, lomod-bunker-hill, hoc, lomod-south, s8-lomods, new-vision, lomod-west, hillhaven-lomod, soto-lomod, lafayette-cc, oakwood-community, mclaughlin-village, maida-sepulveda, rampart-village, hofa, housing-pathways, finding-hope, hope-to-house, key-to-housing, new-way-home, vision-home]
+
+officers:
+  - {person: Tina Smith-Booth, title: President, entities: [new-vision, lomod-south, la-cienega, hoc, lomod-west, s8-lomods], source_by_entity: true}
+  - {person: Tina Smith-Booth, title: President, entities: [key-to-housing], source: kth_2026, quote: "Tina Smith-Booth, President of KTH"}
+  - {person: Tina Smith-Booth, title: President, entities: [housing-pathways], source: hpi_minutes_2024, quote: "Tina Smith-Booth, President"}
+  - {person: Patricia Kataura, title: Treasurer, entities: [key-to-housing], source: kth_2026, quote: "Patricia Kataura, Treasurer"}
+  - {person: Patricia Kataura, title: Treasurer, entities: [new-vision, lomod-south, la-cienega, hoc, lomod-west, s8-lomods], source_by_entity: true}
+  - {person: Lisette Belon, title: Secretary, entities: [new-vision, lomod-south, la-cienega, hoc, lomod-west, s8-lomods], source_by_entity: true, status: former, end_date: "2025-12", note: "Replaced by Eric Chang in December 2025."}
+  - {person: Eric Chang, title: Secretary, entities: [lomod-bunker-hill, hoc, s8-lomods, lomod-south, la-cienega, new-vision, lafayette-cc, hofa, housing-pathways, maida-sepulveda, mclaughlin-village, oakwood-community, rampart-village, finding-hope, hope-to-house, key-to-housing, new-way-home, vision-home], source: bod_officers_2025, quote: "the appointment of HACLA Deputy Director of Asset Management Eric Chang to serve as the Secretary"}
+  - {person: Eric Chang, title: Secretary, entities: [lomod-west, hillhaven-lomod, soto-lomod], source: bod_officers_whs_2025, quote: "the appointment of HACLA Deputy Director of Asset Management Eric Chang to serve as the Secretary"}
+  - {person: Connie Loyola Calumnag, title: President, entities: [la-lomod], source: la_lomod_officers_2025, quote: "RE-APPOINTING CONNIE LOYOLA CALUMNAG AS PRESIDENT"}
+  - {person: Armine Petrosyan, title: Secretary, entities: [la-lomod], source: la_lomod_officers_2025, quote: "ARMINE PETROSYAN AS SECRETARY"}
+  - {person: Hang Phan, title: Treasurer, entities: [la-lomod], source: la_lomod_officers_2025, quote: "HANG PHAN AS TREASURER"}
+
+entity_board_source: {new-vision: ar_new_vision, lomod-south: ar_lomod_south, la-cienega: ar_la_cienega, hoc: ar_hoc, lomod-west: ar_lomod_west, s8-lomods: ar_section8}
+
+commissioners:
+  - {person: Cielo Castro, title: Chair, source: boc_minutes_2026_07}
+  - {person: Adam Demuyakor, title: Commissioner, source: boc_minutes_2026_07}
+  - {person: Delfino De La Cruz Jr., title: Commissioner, source: boc_minutes_2026_07}
+  - {person: Aileen Morales, title: Commissioner, source: boc_minutes_2026_07}
+  - {person: Lucelia Hooper, title: Commissioner, source: boc_minutes_2026_07}
+  - {person: Aaron Thomas, title: Commissioner, source: boc_minutes_2026_07}
+
+no_board_note: {orchid-llc: "LLC whose sole member and manager is LOMOD West, so it has no separate board.", westlake-llc: "LLC whose sole member and manager is LOMOD West, so it has no separate board.", lomod-pds: "LLC whose sole member and manager is La Cienega, so it has no separate board.", lomod-rhc1: "LLC whose sole member and manager is La Cienega, so it has no separate board.", lomod-rhc2: "LLC whose sole member and manager is La Cienega, so it has no separate board.", lomod-jds4: "LLC whose sole member and manager is La Cienega, so it has no separate board.", crescent-lp: "Limited partnership run by its general partner, La Cienega, so it has no board."}

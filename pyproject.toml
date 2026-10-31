@@ -1,0 +1,29 @@
+[project]
+name = "hacla-db"
+version = "0.1.0"
+description = "Sourced database of HACLA's housing holdings, with a query package and Flask front-end"
+requires-python = ">=3.11"
+dependencies = ["flask>=3"]
+
+[project.optional-dependencies]
+build = ["pdfplumber", "openpyxl", "pyyaml", "requests", "beautifulsoup4"]
+static = ["frozen-flask"]
+test = ["pytest", "quickjs", "frozen-flask"]
+
+[project.scripts]
+hacla-db = "hacla_db.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["hacla_db", "webapp"]
+
+[tool.setuptools.package-data]
+hacla_db = ["schema.sql"]
+webapp = ["templates/*", "static/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

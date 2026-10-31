@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}HACLA Holdings{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body>
+<header><a class="brand" href="{{ url_for('index') }}">HACLA Holdings</a>
+<nav><a href="{{ url_for('index') }}">Holdings</a><a href="{{ url_for('entities') }}">Entities</a><a href="{{ url_for('people') }}">People</a><a href="{{ url_for('sources') }}">Sources</a><a href="{{ url_for('issues') }}">Data issues</a></nav></header>
+<main>{% block body %}{% endblock %}</main>
+<footer>An independent compilation of public records, not affiliated with or endorsed by HACLA. Check the linked source before relying on a fact. Data built {{ built_on }}.</footer>
+{% block scripts %}{% endblock %}</body></html>

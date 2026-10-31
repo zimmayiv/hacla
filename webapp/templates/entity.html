@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% from "_macros.html" import src, board_panel %}{% block body %}<p class="crumb"><a href="{{ url_for('entities') }}">Entities</a></p><h1>{{ e.name }}</h1><p class="lede">{{ e.type|label }} {{ src(e) }}</p>
+{% if e.parent %}<p>Parent: <a href="{{ url_for('entity', entity_id=e.parent[0].id) }}">{{ e.parent[0].name }}</a></p>{% endif %}
+{% if e.governance %}<p>{{ e.governance }}</p>{% endif %}
+{% if e.reconciliation %}{% set r = e.reconciliation %}<p class="note">HACLA reports {{ r.published_properties }} properties and {{ '{:,}'.format(r.published_units) }} units for this entity. This database links {{ r.db_properties }} properties and {{ '{:,}'.format(r.db_units) }} units.</p>{% endif %}
+{% if e.children %}<h2>Subsidiaries</h2><ul>{% for c in e.children %}<li><a href="{{ url_for('entity', entity_id=c.id) }}">{{ c.name }}</a></li>{% endfor %}</ul>{% endif %}
+<h2>Board and officers</h2>{% if e.board %}{{ board_panel(e.board) }}{% endif %}
+<h2>Holdings</h2>{% if e.holdings %}<div class="scroll"><table><thead><tr><th>Holding</th><th class="num">Units</th><th>Role</th><th>Source</th></tr></thead><tbody>{% for h in e.holdings %}<tr><td><a href="{{ url_for('holding', holding_id=h.id) }}">{{ h.name }}</a></td><td class="num">{{ h.total_units if h.total_units is not none else '' }}</td><td class="sub">{{ h.role|label }}</td><td>{{ src(h) }}</td></tr>{% endfor %}</tbody></table></div>{% else %}<p class="note">None linked.</p>{% endif %}{% endblock %}

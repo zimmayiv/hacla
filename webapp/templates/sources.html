@@ -1,0 +1,3 @@
+{% extends "base.html" %}{% block body %}<h1>Sources</h1><p class="lede">Every document the database cites. Source links beside each fact show how it was verified:</p>
+<ul>{% for k, v in evidence_labels.items() %}<li><span class="src ev-{{ k }}">{{ k|label }}</span> {{ v }}</li>{% endfor %}</ul>
+<div class="scroll"><table><thead><tr><th>Document</th><th>Kind</th><th>Date</th><th class="num">Facts cited</th></tr></thead><tbody>{% for s in sources %}<tr><td><a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.title }}</a></td><td class="sub">{{ s.kind|label }}</td><td class="sub">{{ s.doc_date or '' }}</td><td class="num">{{ s.n_facts }}</td></tr>{% endfor %}</tbody></table></div>{% endblock %}

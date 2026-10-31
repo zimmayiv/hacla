@@ -1,0 +1,26 @@
+{% extends "base.html" %}{% block body %}
+<h1>Housing holdings</h1>
+<p class="lede">{{ stats.holdings }} holdings. Published facts carry a link to the source. Coverage: location {{ stats.with_location }}, year built {{ stats.with_year }}, acquisition or first-availability date {{ stats.with_acquired }}, capital stack {{ stats.with_stack }}, AMI tiers {{ stats.with_ami }}. Owner documented for {{ stats.owner_documented }}, inferred for {{ stats.owner_inferred }}, not stated for {{ stats.owner_not_itemized }}.</p>
+<form id="filters" class="filters" hidden>
+<label class="wide">Search<input name="q" type="search" placeholder="Name, address, owner, manager"></label>
+<label>Relationship<select name="relationship"><option value="">All housing</option>{% for f in facets.relationship %}<option value="{{ f.value }}">{{ f.value|label }} ({{ f.n }})</option>{% endfor %}</select></label>
+<label>Status<select name="status"><option value="">Any</option>{% for f in facets.status %}<option value="{{ f.value }}">{{ f.value|label }} ({{ f.n }})</option>{% endfor %}</select></label>
+<label>Program<select name="program"><option value="">Any</option>{% for f in facets.program %}<option value="{{ f.value }}">{{ f.value }} ({{ f.n }})</option>{% endfor %}</select></label>
+<label>Restricted at or below % AMI<input name="ami_at_most" type="number" min="0" max="200"></label>
+<label>Council district<select name="council_district"><option value="">Any</option>{% for f in facets.council_district %}<option value="{{ f.value }}">{{ f.value }} ({{ f.n }})</option>{% endfor %}</select></label>
+<label>Manager<select name="manager"><option value="">Any</option>{% for f in facets.manager %}<option value="{{ f.value }}">{{ f.value }} ({{ f.n }})</option>{% endfor %}</select></label>
+<label>Owner evidence<select name="ownership_status"><option value="">Any</option>{% for f in facets.ownership_status %}<option value="{{ f.value }}">{{ f.value|label }} ({{ f.n }})</option>{% endfor %}</select></label>
+<label>Units, min<input name="min_units" type="number" min="0"></label>
+<label>Built from<input name="built_after" type="number"></label>
+<label>Built to<input name="built_before" type="number"></label>
+<label>Capital stack<select name="stack"><option value="">Any</option><option value="yes">Has data</option><option value="no">No data</option></select></label>
+<div class="actions"><button type="button" id="clear">Clear filters</button><a id="csv" href="{{ url_for('data_csv') }}" download="hacla_holdings.csv">Download CSV</a><a href="{{ url_for('data_holdings') }}">JSON</a></div>
+</form>
+<p class="count" id="count" aria-live="polite"><strong>{{ rows|length }}</strong> holdings listed, including commercial and pipeline. Turn on JavaScript to filter and sort.</p>
+<div class="scroll"><table><thead><tr>
+<th><button type="button" data-sort="name">Name</button></th><th><button type="button" data-sort="city">City</button></th><th class="num"><button type="button" data-sort="total_units">Units</button></th><th>Programs</th><th class="num">Deepest AMI</th><th class="num"><button type="button" data-sort="year_built">Built</button></th><th><button type="button" data-sort="acquired_date">Acquired</button></th><th>Owner</th><th>Stack</th></tr></thead>
+<tbody id="rows">{% for r in rows %}<tr><td><a href="{{ url_for('holding', holding_id=r.id) }}">{{ r.name }}</a>{% if r.status != 'operating' %} <span class="tag">{{ r.status|label }}</span>{% endif %}<div class="sub">{{ r.address or '' }}</div></td><td>{{ r.city or '' }}</td><td class="num">{{ r.total_units if r.total_units is not none else '' }}</td><td class="sub">{{ r.programs or '' }}</td><td class="num">{{ (r.deepest_ami|string + '%') if r.deepest_ami else '' }}</td><td class="num">{{ r.year_built or '' }}</td><td>{{ r.acquired_date or '' }}</td><td class="sub">{{ r.owner_name or '' }}</td><td>{{ 'Yes' if r.has_capital_stack else '' }}</td></tr>{% endfor %}</tbody></table></div>
+{% endblock %}
+{% block scripts %}<script id="holdings-data" type="application/json">{{ rows|tojson }}</script>
+<script id="labels" type="application/json">{{ labels|tojson }}</script>
+<script src="{{ url_for('static', filename='holdings.js') }}" data-root="{{ url_for('index') }}"></script>{% endblock %}

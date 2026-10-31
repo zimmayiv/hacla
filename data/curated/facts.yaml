@@ -1,0 +1,347 @@
+# Hand-curated facts. Every fact names a source and, wherever the source has a text layer, an exact quote.
+# The build fails if a quote is not found in the source text; it also derives the PDF page from the quote.
+# evidence: document_text (default when quote is present) | document_image (read from a table image) |
+#           page_summary (seen only through a fetch summary) | search_excerpt | inferred
+
+entities:
+  - {id: hacla, name: Housing Authority of the City of Los Angeles, type: public_agency, governance: "State-chartered public agency established 1938; governed by a Board of Commissioners.", source: key_dev, quote: "Established in 1938"}
+  - {id: la-lomod, name: Los Angeles LOMOD Corporation, type: instrumentality, parent: hacla, governance: "Nonprofit; administers project-based Section 8 contracts for HUD.", source: audit_2024, quote: "LA LOMOD is a nonprofit public benefit organization created to administer project-based Section 8"}
+  - {id: lomod-south, name: "Los Angeles LOMOD South, Inc.", type: instrumentality, parent: hacla, governance: "Nonprofit public benefit corporation; market-rate units with tenant-based subsidies plus senior project-based units. Wholly owned instrumentality of HACLA.", source: boc_rosslyn, quote: "its wholly owned instrumentality"}
+  - {id: la-cienega, name: "La Cienega LOMOD, Inc.", type: instrumentality, parent: hacla, governance: "Nonprofit; HACLA's vehicle for general partner interests in mixed-finance redevelopment.", source: audit_2024, quote: "La Cienega is the managing general partner of the following"}
+  - {id: lomod-pds, name: LOMOD PDS LLC, type: instrumentality, parent: la-cienega, governance: "Single-asset MGP of Pueblo del Sol I and II, 0.0001% interest each.", source: audit_2024, quote: "LOMOD PDS LLC"}
+  - {id: lomod-rhc1, name: LOMOD RHC I LLC, type: instrumentality, parent: la-cienega, governance: "Sole member and manager is La Cienega.", source: audit_2024, quote: "LOMOD RHC I LLC was established August 24, 2020"}
+  - {id: lomod-rhc2, name: LOMOD RHC II LLC, type: instrumentality, parent: la-cienega, governance: "Sole member and manager is La Cienega.", source: audit_2024, quote: "LOMOD RHC II LLC was established August 24, 2021"}
+  - {id: lomod-jds4, name: LOMOD JDS4 LLC, type: instrumentality, parent: la-cienega, governance: "Sole member and manager is La Cienega.", source: audit_2024, quote: "LOMOD JDS4 LLC was established October 27, 2022"}
+  - {id: lomod-west, name: "Los Angeles LOMOD West, Inc.", type: instrumentality, parent: hacla, governance: "Nonprofit public benefit corporation; PSH with PBVs.", source: audit_2024, quote: "Los Angeles LOMOD West is a nonprofit public benefit corporation"}
+  - {id: orchid-llc, name: "Orchid Apartments, LLC", type: instrumentality, parent: lomod-west, governance: "Sole member and manager is LOMOD West.", source: audit_2024, quote: "Orchid Apartments LLC was established August 7, 2023"}
+  - {id: westlake-llc, name: "Westlake MacArthur Park Apartments LLC", type: instrumentality, parent: lomod-west, governance: "Sole member changed from La Cienega to LOMOD West on Oct 26, 2023.", source: audit_2024, quote: "Westlake MacArthur Park LLC was established January 6, 2022"}
+  - {id: new-vision, name: "New Vision Assets, Inc.", type: instrumentality, parent: hacla, governance: "Nonprofit organized Oct 15, 2003; 557 units at 7 properties.", source: audit_2024, quote: "New Vision Assets, Inc. (New Vision) is a nonprofit public benefit corporation"}
+  - {id: hoc, name: Housing Opportunity Corporation, type: instrumentality, parent: hacla, governance: "Owns seven properties. The FY2024 audit describes an all-commissioner board of 3-5; the December 2025 bylaws use the standard five-seat rule.", source: audit_2024, quote: "Board of directors for HOC consists"}
+  - {id: hillhaven-lomod, name: "Hillhaven LOMOD, Inc.", type: instrumentality, parent: hacla, source: audit_2024, quote: "Hillhaven LOMOD, Inc. is a nonprofit public benefit corporation"}
+  - {id: soto-lomod, name: "Soto LOMOD, Inc.", type: instrumentality, parent: hacla, source: audit_2024, quote: "Soto LOMOD, Inc. is a nonprofit public benefit corporation"}
+  - {id: lafayette-cc, name: Lafayette Community Corporation, type: instrumentality, parent: hacla, source: audit_2024, quote: "Lafayette Community Corporation is a nonprofit public benefit corporation"}
+  - {id: housing-pathways, name: "Housing Pathways, Inc.", type: instrumentality, parent: hacla, source: audit_2024, quote: "Housing Pathways, Inc. is a nonprofit public benefit corporation"}
+  - {id: mclaughlin-village, name: "McLaughlin Village, Inc.", type: instrumentality, parent: hacla, source: audit_2024, quote: "McLaughlin Village, Inc. is a nonprofit public benefit corporation"}
+  - {id: maida-sepulveda, name: "Maida-Sepulveda, Inc.", type: instrumentality, parent: hacla, source: audit_2024, quote: "Maida-Sepulveda, Inc. is a nonprofit public benefit corporation"}
+  - {id: hofa, name: "Housing Opportunity for Angelenos, Inc.", type: instrumentality, parent: hacla, governance: "Owns scattered single-family homes; 11 properties, 31 units at Mar 31, 2026.", source: audit_2024, quote: "Housing Opportunity for Angelenos, Inc is a nonprofit public benefit corporation"}
+  - {id: oakwood-community, name: "Oakwood Community, Inc.", type: instrumentality, parent: hacla, governance: "Autumn Court is to transfer here at permanent financing conversion.", source: midyear_2026, quote: "Autumn Court site to be transferred at permanent financing"}
+  - {id: rampart-village, name: "Rampart Village, Inc.", type: instrumentality, parent: hacla, source: audit_2024, quote: "Rampart Village, Inc. is a nonprofit public benefit corporation"}
+  - {id: finding-hope, name: "Finding Hope, Inc.", type: instrumentality, parent: hacla, source: midyear_2026, quote: "Finding Hope, Inc.: Acquired Oxford Suites (October 2025)"}
+  - {id: hope-to-house, name: "Hope to House, Inc.", type: instrumentality, parent: hacla, source: midyear_2026, quote: "Hope to House, Inc.: Acquired Manitou Vistas I (December 2025)"}
+  - {id: key-to-housing, name: "Key to Housing, Inc.", type: instrumentality, parent: hacla, governance: "Named as 'Key to House, Inc' in the FY2024 audit list; 'Key to Housing, Inc.' in board reports.", source: boc_emerald, quote: "KEY TO HOUSING, INC."}
+  - {id: new-way-home, name: New Way Home Corporation, type: instrumentality, parent: hacla, source: midyear_2026, quote: "New Way Home Corporation: Acquired Manitou Vistas II (December 2025)"}
+  - {id: vision-home, name: Vision Home Corporation, type: instrumentality, parent: hacla, source: audit_2024, quote: "Vision Home Corporation is a nonprofit public benefit corporation"}
+  - {id: build-hope, name: "Build Hope, Inc.", type: instrumentality, parent: hacla, governance: "Seven-member board: three commissioners, three HACLA executives, one community member. Formerly Kids Progress, Inc.", source: audit_2024, quote: "Build Hope, Inc. is governed by a seven-member board of directors"}
+  - {id: crescent-lp, name: Crescent Court Limited Partnership, type: partnership, parent: la-cienega, governance: "La Cienega GP 1%; HACLA LP 99%.", source: audit_2024, quote: "The General Partner of the Partnership is La Cienega with a 1% interest"}
+  - {id: s8-lomods, name: "Los Angeles Section 8 LOMODs (Apperson, Browning, Coronado, Jefferson, Juanita, Manhattan, Simpson)", type: instrumentality, parent: hacla, governance: "Seven nonprofit social welfare corporations; 35 PBV units in total.", source: audit_2024, quote: "These sites"}
+  - {id: bell, name: Bell Property Management, type: property_manager, source: midyear_2026, quote: "Bell Property Management (BELL) oversees 69 properties"}
+  - {id: wsh, name: WSH Management, type: property_manager, source: midyear_2026, quote: "WSH Management (WSH) manages 28"}
+  - {id: core, name: National CORE, type: property_manager, source: midyear_2026, quote: "National Core (CORE) is responsible for 16 properties"}
+
+# Portfolio totals published by HACLA; used to reconcile the database.
+entity_totals:
+  - {entity: lomod-south, properties: 77, units: 1600}
+  - {entity: new-vision, properties: 7, units: 557}
+  - {entity: hoc, properties: 7, units: 550}
+  - {entity: lafayette-cc, properties: 1, units: 120}
+  - {entity: housing-pathways, properties: 1, units: 335}
+  - {entity: hofa, properties: 11, units: 31}
+  - {entity: mclaughlin-village, properties: 1, units: 26}
+  - {entity: maida-sepulveda, properties: 1, units: 36}
+  - {entity: finding-hope, properties: 1, units: 28}
+  - {entity: hope-to-house, properties: 1, units: 48}
+  - {entity: new-way-home, properties: 1, units: 21}
+  - {entity: la-cienega, properties: 32, units: 3664}
+  - {entity: s8-lomods, properties: 7, units: 35}
+
+# Public housing developments by HUD development code. HUD supplies units, location and dates.
+public_housing:
+  - {code: CA004000401, id: ramona-gardens, name: Ramona Gardens}
+  - {code: CA004000403, id: pueblo-del-rio, name: Pueblo Del Rio}
+  - {code: CA004000404, id: rancho-san-pedro, name: Rancho San Pedro, status: redevelopment}
+  - {code: CA004000406, id: william-mead-homes, name: William Mead Homes, status: redevelopment}
+  - {code: CA004000407, id: estrada-courts, name: Estrada Courts}
+  - {code: CA004000409, id: avalon-gardens-gonzaque-village, name: "Avalon Gardens / Gonzaque Village"}
+  - {code: CA004000413, id: nickerson-gardens, name: Nickerson Gardens}
+  - {code: CA004000419, id: imperial-courts, name: Imperial Courts}
+  - {code: CA004000421, id: mar-vista-gardens, name: Mar Vista Gardens}
+  - {code: CA004000422, id: san-fernando-gardens, name: San Fernando Gardens}
+  - {code: CA004000593, id: pico-gardens-las-casitas, name: "Pico Gardens / Las Casitas"}
+  - {code: CA004000999, id: jordan-scattered, name: "Jordan Downs Scattered Sites", merges_list: true}
+  - {code: CA004000427, id: dana-street-apartments, name: Dana Street Apartments, merges_list: true}
+
+# Holdings not on the Asset Management list or HUD layer.
+holdings:
+  - {id: jordan-downs-legacy, name: "Jordan Downs (legacy public housing)", address: "9800 Grape St", city: Los Angeles, zip: "90002", units: 700, relationship: public_housing_direct, status: redevelopment, hud_code: CA004000416, program_tags: [Public Housing], source: plan_2027, quote: "Development Number CA004000416 Total Number of Units 700"}
+  - {id: jd-cedar-grove, name: "Cedar Grove (Jordan Downs 1A)", relationship: partnership, status: operating, ctcac: [CA-2016-907], source: plan_2027, quote: "Cedar Grove (aka Phase 1A), comprising 115 units"}
+  - {id: jd-new-harvest, name: "New Harvest (Jordan Downs 1B)", relationship: partnership, status: operating, ctcac: [CA-2017-778], source: plan_2027, quote: "New Harvest (aka Phase 1B), which includes 135 affordable units"}
+  - {id: jd-park-place, name: "Park Place (Jordan Downs Area H)", relationship: partnership, status: operating, ctcac: [CA-2019-037], source: plan_2027, quote: "Park Place (aka Area H) comprises of 80 units"}
+  - {id: jd-sky, name: "Sky (Jordan Downs S2)", relationship: partnership, status: operating, ctcac: [CA-2020-628], source: plan_2027, quote: "Sky (aka Phase S2)"}
+  - {id: jd-oak-terrace, name: "Oak Terrace (Jordan Downs S3)", relationship: partnership, status: operating, ctcac: [CA-2019-083], source: plan_2027, quote: "Oak Terrace (aka Phase S3)"}
+  - {id: jd-nueva-vida, name: "Nueva Vida (Jordan Downs S4)", relationship: partnership, status: operating, ctcac: [CA-2022-636], source: plan_2027, quote: "Nueva Vida, (aka Phase S4), is a 90-unit development"}
+  - {id: jd-kalmia-rose, name: "Kalmia Rose (Jordan Downs H2A)", relationship: partnership, status: operating, ctcac: [CA-2021-176], source: plan_2027, quote: "Kalmia Rose (aka Area H2A)"}
+  - {id: jd-cypress-view, name: "Cypress View (Jordan Downs H2B)", relationship: partnership, status: operating, ctcac: [CA-2022-606], source: plan_2027, quote: "Cypress View (aka Area H2B) is a 119-unit development"}
+  - {id: jd-mariposa, name: "Mariposa (Jordan Downs S5)", relationship: partnership, status: under_construction, ctcac: [CA-2024-053], source: plan_2027, quote: "Mariposa (aka Phase S5)"}
+  - {id: jd-h3a, name: "Jordan Downs H3A (4A)", relationship: partnership, status: predevelopment, ctcac: [CA-2026-046], source: plan_2027, quote: "Phases H3A and S6 are currently under predevelopment"}
+  - {id: jd-s6, name: "Jordan Downs S6 (Mercado)", relationship: partnership, status: predevelopment, ctcac: [CA-2026-527], source: plan_2027, quote: "Phases H3A and S6 are currently under predevelopment"}
+  - {id: harbor-village, name: Harbor Village Apartments, relationship: partnership, status: operating, ctcac: [CA-2013-843], source: audit_2024, quote: "Harbor Village Housing Partners"}
+  - {id: dana-strand-senior, name: Dana Strand Senior Apartments, relationship: partnership, status: operating, ctcac: [CA-2009-856], source: audit_2024, quote: "Dana Strand Senior Housing, L.P."}
+  - {id: harbor-view-place, name: "Harbor View Place (New Dana Strand I)", relationship: partnership, status: redevelopment, hud_code: CA004000225, ctcac: [CA-2004-084, CA-2025-640], source: plan_2027, quote: "New Dana Strand Phase I also known as Harbor View Place"}
+  - {id: wilmington-townhomes, name: "Wilmington Townhomes (New Dana Strand II)", relationship: partnership, status: redevelopment, hud_code: CA004000228, ctcac: [CA-2005-843, CA-2026-653], source: plan_2027, quote: "New Dana Strand Phase II also known as Wilmington Townhomes"}
+  - {id: camino-del-mar, name: "Camino Del Mar (New Dana Strand IV-A)", relationship: partnership_noncontrolling, status: operating, ctcac: [CA-2016-815], source: audit_2024, quote: "Camino Del Mar L.P."}
+  - {id: vista-del-mar, name: "Vista Del Mar (New Dana Strand IV-B)", relationship: partnership_noncontrolling, status: operating, ctcac: [CA-2016-814], source: audit_2024, quote: "Vista Del Mar L.P."}
+  - {id: del-rey-square, name: Del Rey Square Senior Housing, relationship: partnership, status: operating, hud_code: CA004000852, ctcac: [CA-2011-811], source: audit_2024, quote: "Del Rey Square Senior Housing L.P."}
+  - {id: pueblo-del-sol-1, name: Pueblo del Sol Phase I, relationship: partnership, status: operating, ctcac: [CA-2020-557], source: audit_2024, quote: "Pueblo del Sol I Housing Partners, L.P."}
+  - {id: pueblo-del-sol-2, name: Pueblo del Sol Phase II, relationship: partnership, status: operating, ctcac: [CA-2020-739], source: audit_2024, quote: "Sol II Housing Partners, L.P."}
+  - {id: rose-hill-1, name: Rose Hill Courts Phase I, relationship: partnership, status: operating, ctcac: [CA-2020-670], source: plan_2027, quote: "Phase I project comprising 89 units"}
+  - {id: rose-hill-2, name: Rose Hill Courts Phase II, relationship: partnership, status: under_construction, ctcac: [CA-2024-547], source: plan_2027, quote: "Rose Hill Courts Phase 2 4446 Florizel St. 95"}
+  - {id: one-san-pedro-1, name: "One San Pedro Phase I (327 Harbor)", relationship: partnership, status: under_construction, ctcac: [CA-2023-653], source: plan_2027, quote: "Rancho San Pedro Offsite Phase - 327 Harbor Blvd"}
+  - {id: alveare-parkview, name: Alveare Parkview, relationship: partnership, status: under_construction, ctcac: [CA-2024-654], source: midyear_2026, quote: "Alveare Parkview Under Related California 105 MGP"}
+  - {id: alveare-terrace, name: "Alveare Terrace (Senior)", relationship: partnership, status: predevelopment, ctcac: [CA-2026-466], source: midyear_2026, quote: "Alveare Terrace Securing Related California 100 MGP"}
+  - {id: alveare-oakview, name: "Alveare Oakview (PSH)", address: "1405 S. Broadway", city: Los Angeles, zip: "90015", units: 98, relationship: partnership, status: predevelopment, program_tags: [PSH, RAD PBV], source: midyear_2026, quote: "Alveare (PSH) Securing Related California 98 MGP"}
+  - {id: victory-blvd, name: Victory Boulevard Apartments, relationship: partnership, status: under_construction, ctcac: [CA-2024-735], source: midyear_2026, quote: "Victory Boulevard Under Linc Housing 194 AGP"}
+  - {id: new-clark, name: New Clark Residences, relationship: partnership, status: predevelopment, ctcac: [CA-2025-628], source: midyear_2026, quote: "New Clark Securing Abode 107 AGP"}
+  - {id: crenshaw-crossing-east, name: Crenshaw Crossing East, relationship: partnership, status: predevelopment, ctcac: [CA-2026-649], source: midyear_2026, quote: "Crenshaw Pre-development Watt Companies, 401 MGP"}
+  - {id: acclaim-baldwin, name: "Acclaim at Baldwin Village", address: "3939 Ursula Ave", city: Los Angeles, zip: "90008", relationship: partnership, status: operating, source: midyear_2026, quote: "Acclaim at Baldwin Village and Residences at Woodlake"}
+  - {id: residences-woodlake, name: Residences at Woodlake, relationship: partnership, status: operating, source: midyear_2026, quote: "Acclaim at Baldwin Village and Residences at Woodlake"}
+  - {id: manitou-vistas-1, name: Manitou Vistas I, relationship: owned_affiliate, status: operating, ctcac: [CA-2006-114], source: midyear_2026, quote: "Hope to House, Inc.: Acquired Manitou Vistas I (December 2025)"}
+  - {id: manitou-vistas-2, name: Manitou Vistas II, relationship: owned_affiliate, status: operating, ctcac: [CA-2007-046], source: midyear_2026, quote: "New Way Home Corporation: Acquired Manitou Vistas II (December 2025)"}
+  - {id: rosslyn-lofts, name: Rosslyn Lofts, address: "451 S. Main Street", city: Los Angeles, zip: "90013", units: 302, relationship: owned_affiliate, status: operating, year_built_note: "Historic Core building", program_tags: [Affordable], population: "Extremely low-income residents", source: boc_rosslyn, quote: "The Property consists of 297 residential units and 5 commercial units"}
+  - {id: missouri-ave, name: "Missouri Apartments (11418 Missouri Ave)", address: "11418 Missouri Ave", city: Los Angeles, zip: "90025", units: 44, relationship: owned_affiliate, status: operating, br: {br0: 8, br1: 33, br2: 3}, program_tags: [Affordable, RAD PBV], population: "Priority for households displaced by LA County wildfires", source: boc_missouri, quote: "forty-four (44) units, including eight (8) studio units, thirty-three (33) one-bedroom units"}
+  - {id: edgehill, name: "2949-2953 Edgehill Drive", address: "2949 Edgehill Drive", city: Los Angeles, zip: "90018", units: 5, relationship: pipeline_acquisition, status: rehabilitation, program_tags: [Affordable], source: boc_edgehill, quote: "to accept a 5-unit real property located at 2949-2953 Edgehill"}
+  - {id: la-plaza-village, name: La Plaza Village, address: "555 N Spring Street", city: Los Angeles, zip: "90012", units: 355, relationship: pipeline_acquisition, status: under_negotiation, br: {br0: 153, br1: 115, br2: 81, br3: 6}, program_tags: [Affordable, RAD PBV], source: plan_2027, quote: "HACLA is in negotiations to acquire an occupied mixed-use property at 555 N Spring Street"}
+  - {id: el-sereno, name: "El Sereno Sustainable Futures (Caltrans homes)", address: "Scattered sites, El Sereno", city: Los Angeles, relationship: owned_affiliate, status: rehabilitation, program_tags: [RAD PBV, Scattered], sites: ["3134 Sheffield", "3219 Sheffield", "3534 Sheffield", "3419 Sheffield", "5477 Sheffield", "3223 Sheffield", "3220 Sheffield", "3215 Sheffield", "5462 Almont", "5471 Keats", "4215 Maycrest"], source: plan_2027, quote: "HACLA has purchased eight (8) properties from the State of California Department of Transportation"}
+  - {id: eagle-rock-4900, name: "4900 Eagle Rock Apartments", address: "4900 Eagle Rock Blvd", city: Los Angeles, zip: "90041", units: 64, relationship: pipeline_development, status: predevelopment, program_tags: [LIHTC, RAD PBV], source: plan_2027, quote: "57 one-bedroom units, 4 two-bedroom units, and 3 three-bedroom units"}
+  - {id: rampart-690, name: "690 S. Rampart (parking parcel)", address: "690 S. Rampart Blvd", city: Los Angeles, units: 150, relationship: pipeline_development, status: predevelopment, program_tags: [RAD PBV], source: plan_2027, quote: "approximately a 150-unit mixed-income"}
+  - {id: wilshire-crenshaw, name: Wilshire/Crenshaw Apartments, relationship: pipeline_development, status: proposed, units: 196, program_tags: [LIHTC, RAD PBV], source: plan_2027, quote: "one hundred and ninety-six (196) large family"}
+  - {id: union-echo-park, name: Union at Echo Park, address: "1140 N Glendale Blvd", city: Los Angeles, units: 77, relationship: pipeline_development, status: proposed, program_tags: [RAD PBV], source: plan_2027, quote: "seventy-seven (77) units, including twenty (20) Restore Rebuild units"}
+  - {id: social-housing-east, name: Social Housing East, address: "Multiple addresses, eastern LA", city: Los Angeles, units: 120, relationship: pipeline_acquisition, status: predevelopment, program_tags: [RAD PBV], source: rad_sh_east, quote: "Eastern area of City of LA"}
+  - {id: social-housing-west, name: Social Housing West, address: "Multiple addresses, western LA", city: Los Angeles, units: 120, relationship: pipeline_acquisition, status: predevelopment, program_tags: [RAD PBV], source: rad_sh_west, quote: "Western area of City of LA"}
+  - {id: social-housing-south, name: Social Housing South, address: "Multiple addresses, southern LA", city: Los Angeles, units: 120, relationship: pipeline_acquisition, status: predevelopment, program_tags: [RAD PBV], source: rad_sh_south, quote: "Southern area of City of LA"}
+  - {id: social-housing-valley, name: Social Housing Valley, address: "Multiple addresses, San Fernando Valley", city: Los Angeles, units: 120, relationship: pipeline_acquisition, status: predevelopment, program_tags: [RAD PBV], source: rad_sh_valley, quote: "Northern/Valley area of City of LA"}
+  - {id: hq-2600-wilshire, name: "2600 Wilshire Blvd (HACLA headquarters)", address: "2600 Wilshire Blvd", city: Los Angeles, zip: "90057", relationship: commercial, status: operating, program_tags: [Commercial], source: audit_2024, quote: "used to acquire the office building and two nearby parking parcels"}
+  - {id: hamilton-19600, name: "19600-19610 Hamilton Ave", address: "19600 Hamilton Ave", city: Torrance, zip: "90502", relationship: commercial, status: operating, program_tags: [Commercial], source: portfolio_page, evidence: page_summary}
+  - {id: van-nuys-6946, name: "6946 Van Nuys Blvd", address: "6946 Van Nuys Blvd", city: Van Nuys, zip: "91405", relationship: commercial, status: operating, program_tags: [Commercial], source: portfolio_page, evidence: page_summary}
+
+# Corrections to the Asset Management list. Each is also logged as a data issue.
+list_overrides:
+  lafayette-park: {units: 120, name: "Lafayette Park Place", br: {br0: null, br1: 119}, address: "349 South La Fayette Park Place"}
+  emerald-apartments: {units: 160, address: "215 W. 14th Street", br: {br0: 60, br1: 65, br2: 30, br3: 5}}
+
+ownership:
+  # Explicit in a document
+  - {holding: owensmouth-gardens, entity: new-vision, role: owner, source: midyear_2026, quote: "New Vision Assets: Owensmouth Gardens"}
+  - {holding: huntington-ridge-apartments, entity: new-vision, role: owner, source: ar_new_vision, quote: "Huntington Ridge Las Palmas Gardens Leeward Place"}
+  - {holding: las-palmas-gardens, entity: new-vision, role: owner, source: ar_new_vision, quote: "Huntington Ridge Las Palmas Gardens Leeward Place"}
+  - {holding: leeward-place-apartments, entity: new-vision, role: owner, source: ar_new_vision, quote: "Huntington Ridge Las Palmas Gardens Leeward Place"}
+  - {holding: parkview-east, entity: new-vision, role: owner, source: ar_new_vision, quote: "Owensmouth Gardens Parkview East & West San Marino Court"}
+  - {holding: parkview-west, entity: new-vision, role: owner, source: ar_new_vision, quote: "Owensmouth Gardens Parkview East & West San Marino Court"}
+  - {holding: san-marino-court, entity: new-vision, role: owner, source: ar_new_vision, quote: "Owensmouth Gardens Parkview East & West San Marino Court"}
+  - {holding: arthur-k-snyder-villa, entity: lomod-south, role: owner, source: ar_lomod_south, quote: "Art Snyder Reseda East Sepulveda"}
+  - {holding: reseda-east, entity: lomod-south, role: owner, source: ar_lomod_south, quote: "Art Snyder Reseda East Sepulveda"}
+  - {holding: sepulveda-apartments, entity: lomod-south, role: owner, source: ar_lomod_south, quote: "Art Snyder Reseda East Sepulveda"}
+  - {holding: bella-vista-apartments, entity: hoc, role: owner, source: ar_hoc, quote: "Bella Vista Apartments Clemson Corbett Laveta Terrace Martel Apartments"}
+  - {holding: clemson-corbett, entity: hoc, role: owner, source: ar_hoc, quote: "Bella Vista Apartments Clemson Corbett Laveta Terrace Martel Apartments"}
+  - {holding: laveta-terrace, entity: hoc, role: owner, source: ar_hoc, quote: "Bella Vista Apartments Clemson Corbett Laveta Terrace Martel Apartments"}
+  - {holding: union-tower, entity: hoc, role: owner, source: boc_hoc_2020, evidence: search_excerpt}
+  - {holding: tobias-apartments, entity: hoc, role: owner, source: audit_2024, quote: "the acquisition of the new property called Tobias Apart"}
+  - {holding: parthenia-place, entity: hoc, role: owner, source: audit_2024, quote: "the new properties called Parthenia Place and Martel Apartments"}
+  - {holding: martel-apartments, entity: hoc, role: owner, source: audit_2024, quote: "the new properties called Parthenia Place and Martel Apartments"}
+  - {holding: pico-square, entity: lomod-west, role: owner, source: audit_2024, quote: "four properties - Pico Square, Laurel Court, Brynhurst Terrace, and NoHo Apartments"}
+  - {holding: laurel-court-apartments, entity: lomod-west, role: owner, source: audit_2024, quote: "four properties - Pico Square, Laurel Court, Brynhurst Terrace, and NoHo Apartments"}
+  - {holding: brynhurst-terrace, entity: lomod-west, role: owner, source: audit_2024, quote: "four properties - Pico Square, Laurel Court, Brynhurst Terrace, and NoHo Apartments"}
+  - {holding: noho-apartments, entity: lomod-west, role: owner, source: audit_2024, quote: "four properties - Pico Square, Laurel Court, Brynhurst Terrace, and NoHo Apartments"}
+  - {holding: the-orchid-suites, entity: lomod-west, role: owner, source: ar_lomod_west, quote: "NoHo Apartments Orchid Suites Pico Square", note: "The audit also lists Orchid Apartments LLC, whose sole member is LOMOD West, which may hold title."}
+  - {holding: alvarado-lakeview-apartments, entity: lomod-west, role: owner, source: ar_lomod_west, quote: "Alvarado Lakeview Brynhurst Terrace Laurel Court", note: "The audit also lists Westlake MacArthur Park LLC, whose sole member is LOMOD West, which may hold title."}
+  - {holding: the-argent-apartments, entity: lomod-west, role: owner, source: boc_lomod_west, quote: "HACLA’s contingent acquisition of real property at 7639 Van Nuys Blvd"}
+  - {holding: hillhaven-terrace, entity: hillhaven-lomod, role: owner, source: audit_2024, quote: "one property with 34 units at Hillhaven"}
+  - {holding: the-view-soto, entity: soto-lomod, role: owner, source: audit_2024, quote: "85 units at The View at Soto"}
+  - {holding: lafayette-park, entity: lafayette-cc, role: owner, source: boc_lafayette, quote: "HACLA will purchase the Property through LCC"}
+  - {holding: clarendon-apartments, entity: housing-pathways, role: owner, source: audit_2024, quote: "The entity now owns one property with 335"}
+  - {holding: the-collection, entity: mclaughlin-village, role: owner, source: audit_2024, quote: "The entity now owns one property, The Collection"}
+  - {holding: the-maida-apartments, entity: maida-sepulveda, role: owner, source: audit_2024, quote: "The entity now owns one property, Maida Apartments"}
+  - {holding: oxford-suites, entity: finding-hope, role: owner, source: midyear_2026, quote: "Finding Hope, Inc.: Acquired Oxford Suites (October 2025)"}
+  - {holding: manitou-vistas-1, entity: hope-to-house, role: owner, source: midyear_2026, quote: "Hope to House, Inc.: Acquired Manitou Vistas I (December 2025)"}
+  - {holding: manitou-vistas-2, entity: new-way-home, role: owner, source: midyear_2026, quote: "New Way Home Corporation: Acquired Manitou Vistas II (December 2025)"}
+  - {holding: emerald-apartments, entity: lomod-south, role: owner, source: boc_emerald, quote: "The Emerald is currently owned by LOMOD South"}
+  - {holding: emerald-apartments, entity: key-to-housing, role: planned_owner, source: boc_emerald, quote: "authorizes HACLA to transfer the ownership from LOMOD South to Key to Housing, Inc."}
+  - {holding: rosslyn-lofts, entity: lomod-south, role: owner, source: boc_rosslyn, quote: "PURCHASE OF THE ROSSLYN LOFTS PROPERTY LOCATED AT 451 S. MAIN STREET BY LOS ANGELES LOMOD SOUTH, INC."}
+  - {holding: autumn-court, entity: oakwood-community, role: planned_owner, source: midyear_2026, quote: "Autumn Court site to be transferred at permanent financing"}
+  - {holding: crescent-court-apartments, entity: crescent-lp, role: owner, source: audit_2024, quote: "a 32-unit apart"}
+  - {holding: crescent-court-apartments, entity: la-cienega, role: general_partner, source: audit_2024, quote: "The General Partner of the Partnership is La Cienega with a 1% interest"}
+  - {holding: crescent-court-apartments, entity: hacla, role: limited_partner, source: audit_2024, quote: "the Limited Partner is the Housing Authority with a 99% interest"}
+  - {holding: apperson-apartments, entity: s8-lomods, role: owner, source: audit_2024, quote: "Apperson, Browning, Coronado, Jef"}
+  - {holding: browning-apartments, entity: s8-lomods, role: owner, source: audit_2024, quote: "Apperson, Browning, Coronado, Jef"}
+  - {holding: coronado-villas, entity: s8-lomods, role: owner, source: audit_2024, quote: "Apperson, Browning, Coronado, Jef"}
+  - {holding: jefferson-villas, entity: s8-lomods, role: owner, source: audit_2024, quote: "Apperson, Browning, Coronado, Jef"}
+  - {holding: juanita-apartments, entity: s8-lomods, role: owner, source: audit_2024, quote: "Apperson, Browning, Coronado, Jef"}
+  - {holding: manhattan-gardens, entity: s8-lomods, role: owner, source: audit_2024, quote: "Apperson, Browning, Coronado, Jef"}
+  - {holding: simpson-villas, entity: s8-lomods, role: owner, source: audit_2024, quote: "Apperson, Browning, Coronado, Jef"}
+  - {holding: el-sereno, entity: hofa, role: owner, source: audit_2024, quote: "The entity now owns 17", evidence: inferred, note: "HOFA holds single-family homes and board items for Sheffield and Maycrest are addressed to it; the audit does not name these properties."}
+  # Partnership roles HACLA's report states
+  - {holding: jd-nueva-vida, entity: la-cienega, role: managing_general_partner, source: midyear_2026, quote: "S4 “Nueva Vida” Completed/Leased 90 MGP TMO"}
+  - {holding: jd-mariposa, entity: la-cienega, role: managing_general_partner, source: midyear_2026, quote: "S5 Under 75 MGP TMO"}
+  - {holding: jd-s6, entity: la-cienega, role: managing_general_partner, source: midyear_2026, quote: "S6 Securing Financing 100 MGP TMO"}
+  - {holding: jd-kalmia-rose, entity: la-cienega, role: class_a_limited_partner, source: midyear_2026, quote: "H2A “Kalmia Completed/Leased 76 Class A LP Bridge Housing"}
+  - {holding: jd-cypress-view, entity: la-cienega, role: administrative_general_partner, source: midyear_2026, quote: "H2B “Cypress Completed/Leased 119 AGP Bridge Housing"}
+  - {holding: jd-h3a, entity: la-cienega, role: administrative_general_partner, source: midyear_2026, quote: "H3A Securing Financing 97 AGP Bridge Housing"}
+  - {holding: alveare-parkview, entity: la-cienega, role: managing_general_partner, source: midyear_2026, quote: "Alveare Parkview Under Related California 105 MGP"}
+  - {holding: alveare-terrace, entity: la-cienega, role: managing_general_partner, source: midyear_2026, quote: "Alveare Terrace Securing Related California 100 MGP"}
+  - {holding: alveare-oakview, entity: la-cienega, role: managing_general_partner, source: midyear_2026, quote: "Alveare (PSH) Securing Related California 98 MGP"}
+  - {holding: victory-blvd, entity: la-cienega, role: administrative_general_partner, source: midyear_2026, quote: "Victory Boulevard Under Linc Housing 194 AGP"}
+  - {holding: new-clark, entity: la-cienega, role: administrative_general_partner, source: midyear_2026, quote: "New Clark Securing Abode 107 AGP"}
+  - {holding: crenshaw-crossing-east, entity: la-cienega, role: managing_general_partner, source: midyear_2026, quote: "Crenshaw Pre-development Watt Companies, 401 MGP", note: "The report's 401-unit Crenshaw Crossing row covers the whole site, labelled West Angeles CDC partner; CTCAC shows the East phase with La Cienega as GP."}
+  - {holding: harbor-village, entity: la-cienega, role: managing_general_partner, source: audit_2024, quote: "Harbor Village Housing Partners"}
+  - {holding: dana-strand-senior, entity: la-cienega, role: managing_general_partner, source: audit_2024, quote: "Dana Strand Senior Housing, L.P."}
+  - {holding: del-rey-square, entity: la-cienega, role: managing_general_partner, source: audit_2024, quote: "Del Rey Square Senior Housing L.P."}
+  - {holding: jd-new-harvest, entity: la-cienega, role: managing_general_partner, source: audit_2024, quote: "Downs Phase 1B, L.P"}
+  - {holding: jd-oak-terrace, entity: la-cienega, role: managing_general_partner, source: audit_2024, quote: "Jordan Downs S3 L.P."}
+  - {holding: jd-sky, entity: la-cienega, role: managing_general_partner, source: audit_2024, quote: "Downs Phase S2, L.P."}
+  - {holding: pueblo-del-sol-1, entity: lomod-pds, role: managing_general_partner, source: audit_2024, quote: "role of Managing General Partner in Pueblo del Sol I Housing Partners, L.P."}
+  - {holding: pueblo-del-sol-2, entity: lomod-pds, role: managing_general_partner, source: audit_2024, quote: "role of Managing General Partner in Pueblo del Sol I Housing Partners, L.P."}
+  - {holding: rose-hill-1, entity: lomod-rhc1, role: general_partner, source: ctcac_list}
+  - {holding: rose-hill-2, entity: lomod-rhc2, role: general_partner, source: ctcac_list}
+  - {holding: acclaim-baldwin, entity: la-cienega, role: managing_general_partner, source: audit_2024, quote: "Avanath Baldwin Village, L.P"}
+  - {holding: residences-woodlake, entity: la-cienega, role: managing_general_partner, source: audit_2024, quote: "Woodlake Property, L.P."}
+  - {holding: camino-del-mar, entity: la-cienega, role: non_managing_member_of_agp, source: audit_2024, quote: "non-managing member of Mercy Housing La Cienega, LLC"}
+  - {holding: vista-del-mar, entity: la-cienega, role: non_managing_member_of_agp, source: audit_2024, quote: "non-managing member of Vista Del Mar AGP, LLC"}
+
+# financing kinds: acquisition_price | senior_debt | subordinate_debt | public_soft_loan | grant | hacla_loan | hacla_equity | tax_credit_equity | line_of_credit | bond | conduit_bond | deferred_fee | other
+# Multiple 'holdings' means a portfolio facility.
+financing:
+  - {holdings: [rosslyn-lofts], label: "Foreclosure purchase", kind: acquisition_price, amount: 10000000.01, date: "2026-05-21", provider: "HACLA Line of Credit", source: boc_rosslyn, quote: "acquired the Property utilizing HACLA's existing Line of Credit for a purchase price of $10,000,000.01"}
+  - {holdings: [emerald-apartments], label: "Purchase from Olive Investment Group", kind: acquisition_price, amount: 52271726, date: "2025-09-24", source: boc_emerald, quote: "for $52,271,726 on September 24, 2025"}
+  - {holdings: [emerald-apartments], label: "City National LOC draw at closing", kind: line_of_credit, provider: City National Bank, amount: 51470000, date: "2025-09-24", source: boc_emerald, quote: "HACLA used $51,470,000 from the LOC plus $906,358 of the Acquisition"}
+  - {holdings: [emerald-apartments], label: "Acquisition Fund equity at closing", kind: hacla_equity, provider: HACLA Acquisition Fund, amount: 906358, date: "2025-09-24", source: boc_emerald, quote: "HACLA used $51,470,000 from the LOC plus $906,358 of the Acquisition"}
+  - {holdings: [emerald-apartments], label: "HUD 223(f) permanent loan (authorized, up to)", kind: senior_debt, provider: HUD-insured lender, amount: 54000000, date: "2026-05-19", status: authorized, source: boc_emerald, quote: "ENTER INTO A HUD 223(F) LOAN IN AN AMOUNT UP TO $54,000,000"}
+  - {holdings: [emerald-apartments], label: "Acquisition Fund equity (authorized, up to)", kind: hacla_equity, provider: HACLA Acquisition Fund, amount: 4000000, date: "2026-05-19", status: authorized, source: boc_emerald, quote: "up to $4,000,000 in equity from the Acquisition Fund"}
+  - {holdings: [clarendon-apartments], label: "Purchase price", kind: acquisition_price, amount: 141900000, date: "2024-12-23", source: boc_clarendon, quote: "the second addendum adjusted the purchase price to $141,900,000"}
+  - {holdings: [clarendon-apartments], label: "Senior Series 2024A bonds", kind: bond, provider: "HACLA issuer", amount: 88695000, date: "2024-12-01", rate: "3.20%-4.55%", maturity: "2062-12-01", source: audit_2024, quote: "with issuance amounts of $88,695,000 and $49,800,000"}
+  - {holdings: [clarendon-apartments], label: "Subordinate Series 2024B bonds", kind: bond, provider: "HACLA issuer", amount: 49800000, date: "2024-12-01", rate: "6.00%", maturity: "2062-12-01", source: audit_2024, quote: "with issuance amounts of $88,695,000 and $49,800,000"}
+  - {holdings: [clarendon-apartments], label: "California Community Foundation loan", kind: subordinate_debt, provider: California Community Foundation, amount: 5000000, date: "2024-12-01", rate: "1.00%", maturity: "2034-12-01", source: audit_2024, quote: "California Community Foundation issued a $5,000,000 loan"}
+  - {holdings: [clarendon-apartments], label: "HACLA capital contribution (authorized, up to)", kind: hacla_equity, provider: HACLA Acquisition Fund, amount: 14000000, date: "2024-11-14", status: authorized, source: boc_clarendon, quote: "a capital contribution by HACLA of up to $14,000,000"}
+  - {holdings: [lafayette-park], label: "Revolving loan", kind: line_of_credit, provider: City National Bank, amount: 23400000, date: "2024-03-28", source: boc_lafayette, quote: "REVOLVING LOAN OF UP TO $23,400,000"}
+  - {holdings: [lafayette-park], label: "City service payback loan (CDBG)", kind: public_soft_loan, provider: "City of Los Angeles (CDBG)", amount: 19527031, date: "2024-02-01", rate: "0.00%", maturity: "2047-03-05", source: audit_2024, quote: "issued a $19,527,031 loan"}
+  - {holdings: [missouri-ave], label: "Purchase price", kind: acquisition_price, amount: 16650000, date: "2025-08-21", status: contract, source: boc_missouri, quote: "$16,650,000"}
+  - {holdings: [the-maida-apartments], label: "Homekey capital grant", kind: grant, provider: "CA HCD Homekey", amount: 9375000, date: "2023-11-21", source: boc_mclaughlin_sepulveda, quote: "a conditional award of Homekey capital grant funds of $9,375,000"}
+  - {holdings: [the-collection], label: "Homekey capital grant", kind: grant, provider: "CA HCD Homekey", amount: 7000000, date: "2023-11-21", source: boc_mclaughlin_sepulveda, quote: "conditional award of Homekey capital grant funds of $7,000,000 for the McLaughlin Property"}
+  - {holdings: [the-maida-apartments], label: "City Homekey loan (authorized, up to)", kind: public_soft_loan, provider: City of Los Angeles, amount: 11530462, date: "2024-02-08", status: authorized, source: boc_mclaughlin_sepulveda, quote: "up to $11,530,462 for the Sepulveda Property"}
+  - {holdings: [the-collection], label: "City Homekey loan (authorized, up to)", kind: public_soft_loan, provider: City of Los Angeles, amount: 11530462, date: "2024-02-08", status: authorized, source: boc_mclaughlin_sepulveda, quote: "McLaughlin Property and up to $11,530,462"}
+  - {holdings: [noho-apartments], label: "Authorized acquisition price", kind: acquisition_price, amount: 21000000, date: "2020-09-24", status: authorized, source: boc_mteb, quote: "Angeles for $21,000,000 contingent upon grant funding"}
+  - {holdings: [the-orchid-suites], label: "Authorized acquisition price", kind: acquisition_price, amount: 16000000, date: "2020-10-29", status: authorized, source: boc_mteb, quote: "Angeles for $16,000,000 contingent upon grant funding"}
+  - {holdings: [pico-square], label: "Authorized acquisition price", kind: acquisition_price, amount: 36500000, date: "2021-10-28", status: authorized, source: boc_mteb, quote: "for $36,500,000 in response to the HCD Homekey 2 program"}
+  - {holdings: [laurel-court-apartments], label: "Authorized acquisition price", kind: acquisition_price, amount: 10000000, date: "2021-12-16", status: authorized, source: boc_mteb, quote: "Angeles for $10,000,000 in response to the HCD Homekey 2 program"}
+  - {holdings: [alvarado-lakeview-apartments], label: "Authorized acquisition price", kind: acquisition_price, amount: 30750000, date: "2022-01-11", status: authorized, source: boc_mteb, quote: "Los Angeles for $30,750,000 in response to the HCD Homekey 2 program"}
+  - {holdings: [the-view-soto], label: "Authorized acquisition price", kind: acquisition_price, amount: 36125000, date: "2022-01-27", status: authorized, source: boc_mteb, quote: "$36,125,000 in response to the HCD Homekey 2 program"}
+  - {holdings: [hillhaven-terrace], label: "Authorized acquisition price", kind: acquisition_price, amount: 17750000, date: "2022-01-27", status: authorized, source: boc_mteb, quote: "for $17,750,000 in response to the HCD Homekey 2 program"}
+  - {holdings: [brynhurst-terrace], label: "Authorized acquisition price", kind: acquisition_price, amount: 17340000, date: "2022-02-24", status: authorized, source: boc_mteb, quote: "for $17,340,000 in response to the HCD Homekey 2 program"}
+  - {holdings: [the-argent-apartments], label: "Authorized acquisition price (up to)", kind: acquisition_price, amount: 16600000, date: "2021-08-26", status: authorized, source: boc_lomod_west, quote: "for up to $16,600,000"}
+  - {holdings: [noho-apartments, the-orchid-suites, pico-square, laurel-court-apartments, alvarado-lakeview-apartments, the-view-soto, hillhaven-terrace, brynhurst-terrace], label: "M.TEBS Homekey Portfolio bonds, Series 2024A/B/C", kind: bond, provider: "HACLA issuer (M.TEBS)", amount: 71270000, date: "2024-03-01", rate: "4.51%-4.60%", maturity: "2034-04-01", source: audit_2024, quote: "$54,108,000, $5,191,000, and", note: "Portfolio membership from the Oct 2023 authorization, which lists these eight Homekey acquisitions; the bond's final property list should be confirmed."}
+  - {holdings: [the-view-soto], label: "City loan (HHH $4.625M + CDBG $1M)", kind: public_soft_loan, provider: City of Los Angeles, amount: 5625000, date: "2024-02-01", rate: "0.00%", maturity: "2079-02-15", source: audit_2024, quote: "issued a $5,625,000 loan"}
+  - {holdings: [hillhaven-terrace], label: "City loan (HHH $1.85M + CDBG $2M)", kind: public_soft_loan, provider: City of Los Angeles, amount: 3850000, date: "2024-02-01", rate: "0.00%", maturity: "2079-02-15", source: audit_2024, quote: "issued a $3,850,000 loan"}
+  - {holdings: [the-argent-apartments], label: "City loan (HHH $1.65M + CDBG $5M)", kind: public_soft_loan, provider: City of Los Angeles, amount: 6651838, date: "2024-05-01", rate: "1.00%", maturity: "2079-05-16", source: audit_2024, quote: "issued a $6,651,838 loan"}
+  - {holdings: [barbara-ann-apartments], label: "CalHFA acquisition note", kind: senior_debt, provider: CalHFA, amount: 1790000, date: "1995-02-07", rate: "7.25%", maturity: "2025-03-01", source: audit_2024, quote: "Barbara Ann Acquisition $ 1,790,000"}
+  - {holdings: [brittania-apartments], label: "CalHFA acquisition note", kind: senior_debt, provider: CalHFA, amount: 1700000, date: "1995-02-07", rate: "7.25%", maturity: "2025-03-01", source: audit_2024, quote: "Brittania Acquisition 1,700,000"}
+  - {holdings: [glenalbyn-apartments], label: "CalHFA acquisition note", kind: senior_debt, provider: CalHFA, amount: 2250000, date: "1995-02-07", rate: "7.25%", maturity: "2025-03-01", source: audit_2024, quote: "Glenalbyn Acquisition 2,250,000"}
+  - {holdings: [sepulveda-apartments], label: "CalHFA acquisition note", kind: senior_debt, provider: CalHFA, amount: 1850000, date: "1995-02-07", rate: "7.25%", maturity: "2025-03-01", source: audit_2024, quote: "Sepulveda Acquisition 1,850,000"}
+  - {holdings: [wyandotte-apartments], label: "CalHFA acquisition note", kind: senior_debt, provider: CalHFA, amount: 2500000, date: "1995-02-07", rate: "7.25%", maturity: "2025-03-01", source: audit_2024, quote: "Wyandotte Acquisition 2,500,000"}
+  - {holdings: [yosemite-apartments], label: "CalHFA acquisition note", kind: senior_debt, provider: CalHFA, amount: 3400000, date: "1995-02-07", rate: "7.25%", maturity: "2025-03-01", source: audit_2024, quote: "Yosemite Acquisition 3,400,000"}
+  - {holdings: [crescent-court-apartments], label: "CRA/LA residual-receipts loan", kind: public_soft_loan, provider: "CRA/LA (now City of LA)", amount: 1576900, date: "1992-12-23", rate: "3.00%", maturity: "2047-12-23", source: audit_2024, quote: "note amount not to exceed $1,576,900"}
+  - {holdings: [crescent-court-apartments], label: "Permanent mortgage (repaid Oct 2024)", kind: senior_debt, provider: Berkadia, amount: 725000, date: "1994-05-01", maturity: "2024-10-01", source: audit_2024, quote: "principal amount of $725,000"}
+  - {holdings: [owensmouth-gardens], label: "2018 Series A Refunding Bonds, New Vision portfolio (Fannie Mae M.TEB)", kind: bond, provider: "Wells Fargo / JLL / Fannie Mae", amount: 17500000, date: "2018-02-01", rate: "3.98%", maturity: "2038-03-01", source: audit_2024, quote: "2018 Series A Multifamily Housing Refunding", note: "Covers New Vision's portfolio; only Owensmouth is confirmed as a member from available documents."}
+  - {holdings: [bella-vista-apartments, clemson-corbett, laveta-terrace, union-tower, tobias-apartments], label: "Union Portfolio Refunding Bonds 2020 A/B", kind: bond, provider: "MUFG Union Bank", amount: 31170000, date: "2020-05-01", rate: "2.00%-5.00%", maturity: "2044-06-01", source: audit_2024, quote: "2020 Series A and B, in the amount of $31,170,000"}
+  - {holdings: [parthenia-place, martel-apartments], label: "Union Portfolio Bonds 2021 A", kind: bond, provider: "HACLA issuer", amount: 11220000, date: "2021-02-18", rate: "1.75%-4.00%", maturity: "2050-06-01", source: audit_2024, quote: "2021 Series A, in the amount of $11,220,000"}
+  - {holdings: [hq-2600-wilshire], label: "2018 Series A GO Refunding Bonds", kind: bond, provider: "HACLA issuer", amount: 22550000, date: "2018-04-05", rate: "3.00%-4.00%", maturity: "2037-05-10", source: audit_2024, quote: "General Obligation Refunding Bonds in"}
+  - {holdings: [pueblo-del-sol-1], label: "Conduit note Series 2020A", kind: conduit_bond, provider: "HACLA conduit issuer", amount: 31700000, date: "2020-10-01", maturity: "2053-05-01", source: audit_2024, quote: "Sol Phase I) Series 2020A (the “Note”) totaling $31,700,000"}
+  - {holdings: [pueblo-del-sol-2], label: "Conduit note", kind: conduit_bond, provider: "HACLA conduit issuer", amount: 25000000, date: "2021-01-01", source: audit_2024, quote: "$25,000,000, $42,780,000, and"}
+  - {holdings: [jd-sky], label: "Conduit note", kind: conduit_bond, provider: "HACLA conduit issuer", amount: 42780000, date: "2021-01-01", source: audit_2024, quote: "$25,000,000, $42,780,000, and"}
+  - {holdings: [rose-hill-1], label: "Conduit note", kind: conduit_bond, provider: "HACLA conduit issuer", amount: 37346644, date: "2021-01-01", source: audit_2024, quote: "$37,346,644"}
+  - {holdings: [jd-nueva-vida], label: "Conduit note", kind: conduit_bond, provider: "HACLA conduit issuer", amount: 50317500, date: "2023-01-01", source: audit_2024, quote: "$50,317,500 and $61,302,912"}
+  - {holdings: [jd-cypress-view], label: "Conduit note", kind: conduit_bond, provider: "HACLA conduit issuer", amount: 61302912, date: "2023-01-01", source: audit_2024, quote: "$50,317,500 and $61,302,912"}
+  - {holdings: [one-san-pedro-1], label: "Conduit note", kind: conduit_bond, provider: "HACLA conduit issuer", amount: 22500000, date: "2024-01-01", source: audit_2024, quote: "$18.5 million, $22.5 million, $71.2 million and $138.5 million"}
+  - {holdings: [jordan-downs-legacy], label: "$35M Choice Neighborhoods Implementation Grant (Jordan Downs program)", kind: grant, provider: HUD, amount: 35000000, date: "2020-04-01", source: plan_2027, quote: "HACLA was awarded a $35 million Choice Neighborhoods Initiative", note: "Program-level grant across the redevelopment; not allocated to phases here."}
+
+# Portfolio-wide facilities not attributable to named properties.
+facilities:
+  - {label: "City National Bank revolving line of credit", kind: line_of_credit, provider: "City National Bank / CN Financing", amount: 215000000, date: "2024-12-27", maturity: "2028-12-18", note: "Used for acquisitions; balance $75,759,250 at Dec 31, 2024.", source: audit_2024, quote: "further increased the LOC to $215,000,000"}
+  - {label: "Acquisition Equity Fund", kind: hacla_equity, provider: "Los Angeles LOMOD, Inc. reserves", amount: 30000000, date: "2024-04-11", source: acq_fund, quote: "RESOLUTION AUTHORIZING AN ACQUISITION EQUITY FUND OF $30,000,000"}
+  - {label: "Faircloth Transition Fund", kind: hacla_equity, provider: "Los Angeles LOMOD, Inc. reserves", amount: 3000000, date: "2024-04-11", source: acq_fund, quote: "FAIRCLOTH"}
+  - {label: "JPMorgan Chase note, Series 2007 (properties not named)", kind: bond, provider: JPMorgan Chase, amount: 18024000, date: "2007-01-11", rate: "4.99%", maturity: "2037-01-01", note: "Allocated among 'certain properties'; balance $10,491,496 at Dec 31, 2024.", source: audit_2024, quote: "$18,024,000 of Multifamily Housing Revenue and"}
+
+# restriction_type: covenant | regulatory_agreement | statutory | city_covenant | planned_covenant
+ami:
+  - {holding: clarendon-apartments, tiers: {30: 24, 50: 42, 80: 46, 120: 133, 150: 88}, type: covenant, source: boc_clarendon, evidence: document_image, page: 4, note: "HACLA Covenant, 333 units; compliance on turnover or voluntary certification. Includes 50 Faircloth/RAD units."}
+  - {holding: clarendon-apartments, tiers: {50: 26}, type: city_covenant, source: boc_clarendon, quote: "restricts occupancy of twenty-six (26) of the units in the Property to households qualifying as", note: "2017 density-bonus covenant, 55 years; overlaps the HACLA Covenant."}
+  - {holding: emerald-apartments, tiers: {30: 16, 50: 22, 60: 10, 80: 31, 120: 80}, type: regulatory_agreement, source: boc_emerald, quote: "Not less than eighty (80) units are reserved for households earning up to 120% AMI", note: "Imposed as units turn over; 38 units at 30-50% AMI planned for Restore Rebuild PBV."}
+  - {holding: lafayette-park, tiers: {80: 90}, type: regulatory_agreement, source: boc_lafayette, quote: "or a total of 90 units, will be restricted to occupancy by households with", note: "75% of units; met over time."}
+  - {holding: missouri-ave, tiers: {50: 1, 80: 35, 100: 7}, type: city_covenant, source: boc_missouri, quote: "already income restricted, comprising one (1) unit restricted to occupancy by Very Low", note: "ED1 restrictions as built."}
+  - {holding: missouri-ave, tiers: {20: 14, 50: 2, 60: 27}, type: planned_covenant, source: boc_missouri, quote: "Fourteen (14) units will be restricted to", note: "As of Nov 2025 report, conditional on MHP award; the 2027 Agency Plan describes a different mix (7/10/26 at 30/50/80%)."}
+  - {holding: missouri-ave, tiers: {30: 7, 50: 10, 80: 26}, type: planned_covenant, source: plan_2027, quote: "seven (7) units restricted to", note: "Later Agency Plan mix; supersedes the Nov 2025 proposal if MHP did not fund."}
+  - {holding: edgehill, tiers: {30: 1, 60: 1, 80: 3}, type: planned_covenant, source: boc_edgehill, quote: "Three two-bedroom units will be restricted to occupancy by individuals or families with incomes not exceeding eighty percent (80%)"}
+  - {holding: la-plaza-village, tiers: {80: 71}, type: regulatory_agreement, source: plan_2027, quote: "Twenty percent (20%) of units are restricted to", note: "20% of 355 units today; HACLA intends a 30%-120% covenant on all units if acquired."}
+  - {holding: new-clark, tiers: {40: 106}, type: planned_covenant, source: midyear_2026, quote: "units for tenants at 40% or less of area median income", note: "Report's description; the CTCAC staff report lists a 30/40/60% mix."}
+  - {holding: el-sereno, tiers: {50: 18}, type: planned_covenant, source: rad_el_sereno, quote: "up to 50% AMI", note: "HACLA RAD page: 18 RAD/PBV units up to 50% AMI."}
+
+events:
+  - {holding: jd-cedar-grove, type: financial_close, date: "2017-03", source: plan_2027, quote: "achieved financial closing in March 2017"}
+  - {holding: jd-new-harvest, type: financial_close, date: "2018-06", source: plan_2027, quote: "achieved financial closing in June"}
+  - {holding: jd-park-place, type: completed, date: "2022-03", source: plan_2027, quote: "and was completed in March 2022"}
+  - {holding: jd-sky, type: completed, date: "2023-11", source: plan_2027, quote: "completed in November 2023"}
+  - {holding: jd-oak-terrace, type: completed, date: "2022-11", source: plan_2027, quote: "completed construction in"}
+  - {holding: jd-nueva-vida, type: completed, date: "2025-05", source: plan_2027, quote: "completed construction in May 2025"}
+  - {holding: jd-kalmia-rose, type: completed, date: "2024-12", source: plan_2027, quote: "was completed in December"}
+  - {holding: jd-cypress-view, type: completed, date: "2025-07", source: plan_2027, quote: "was completed in July 2025"}
+  - {holding: jd-mariposa, type: financial_close, date: "2024-11", source: plan_2027, quote: "closed financing in November 2024"}
+  - {holding: rose-hill-1, type: completed, date: "2023-08", source: plan_2027, quote: "In August 2023, the project achieved completion"}
+  - {holding: one-san-pedro-1, type: financial_close, date: "2024-11", source: plan_2027, quote: "In November 2024, HACLA closed on the financing"}
+  - {holding: rancho-san-pedro, type: section_18_application, date: "2026", source: plan_2027, quote: "In 2026, HACLA submitted a Section 18 application for the disposition of Rancho San Pedro"}
+  - {holding: clarendon-apartments, type: acquired, date: "2024-12-23", source: boc_clarendon, evidence: search_excerpt, note: "Mid-year report states closing date 12/23/2024."}
+  - {holding: emerald-apartments, type: acquired, date: "2025-09-24", source: boc_emerald, quote: "for $52,271,726 on September 24, 2025"}
+  - {holding: lafayette-park, type: acquired, date: "2024-03", source: acq_fund, quote: "In March 2024, HACLA, through one of the"}
+  - {holding: rosslyn-lofts, type: acquired, date: "2026-05-21", source: boc_rosslyn, quote: "on May 21, 2026, at approximately 10:05AM in Pomona"}
+  - {holding: oxford-suites, type: acquired, date: "2025-10", source: midyear_2026, quote: "Finding Hope, Inc.: Acquired Oxford Suites (October 2025)"}
+  - {holding: manitou-vistas-1, type: acquired, date: "2025-12", source: midyear_2026, quote: "Hope to House, Inc.: Acquired Manitou Vistas I (December 2025)"}
+  - {holding: manitou-vistas-2, type: acquired, date: "2025-12", source: midyear_2026, quote: "New Way Home Corporation: Acquired Manitou Vistas II (December 2025)"}
+  - {holding: the-collection, type: acquired, date: "2024-06", source: audit_2024, quote: "did not own any assets until June 2024"}
+  - {holding: the-maida-apartments, type: acquired, date: "2024-05", source: audit_2024, quote: "did not own any assets until May 2024"}
+  - {holding: barbara-ann-apartments, type: acquired, date: "1995-02-07", source: audit_2024, quote: "payable on February 7, 1995, which funds were used to purchase six properties"}
+  - {holding: brittania-apartments, type: acquired, date: "1995-02-07", source: audit_2024, quote: "payable on February 7, 1995, which funds were used to purchase six properties"}
+  - {holding: glenalbyn-apartments, type: acquired, date: "1995-02-07", source: audit_2024, quote: "payable on February 7, 1995, which funds were used to purchase six properties"}
+  - {holding: sepulveda-apartments, type: acquired, date: "1995-02-07", source: audit_2024, quote: "payable on February 7, 1995, which funds were used to purchase six properties"}
+  - {holding: wyandotte-apartments, type: acquired, date: "1995-02-07", source: audit_2024, quote: "payable on February 7, 1995, which funds were used to purchase six properties"}
+  - {holding: yosemite-apartments, type: acquired, date: "1995-02-07", source: audit_2024, quote: "payable on February 7, 1995, which funds were used to purchase six properties"}
+  - {holding: edgehill, type: built, date: "1924", source: boc_edgehill, quote: "1924, with additional improvements made in 1955 and 1998"}
+  - {holding: missouri-ave, type: built, date: "2025-09-11", source: boc_missouri, quote: "The Property received a certificate of occupancy (“COO”) September 11, 2025"}
+  - {holding: crescent-court-apartments, type: partnership_formed, date: "1993-03-26", source: audit_2024, quote: "on March 26, 1993, to construct"}
+
+notes:
+  - {holding: rosslyn-lofts, text: "Bought at a foreclosure sale by LOMOD South. Originally developed with LAHD and HCD covenants; substantially occupied by extremely low-income residents. Board action ratifies a May 19, 2026 closed-session authorization to cure any alleged Brown Act violation.", source: boc_rosslyn, quote: "CURE AND CORRECT ANY"}
+  - {holding: clarendon-apartments, text: "Occupied market-rate building; covenants apply on turnover or voluntary certification, and no resident must move. Rent limited to 30% of gross income at the tier, with 4% annual increase cap. Covenant lasts until senior bonds are repaid, projected 37 years.", source: boc_clarendon, quote: "maximum of four"}
+  - {holding: lafayette-park, text: "City loan is forgiven through a 20-year service payback; repayment clock starts at three years or when 90 units are occupied by households at or below 80% AMI.", source: audit_2024, quote: "It is structured with a 20-year service payback period"}
+  - {holding: harbor-view-place, text: "Investor exited the partnership by Dec 2024, replaced by Abode. HACLA plans purchase and resyndication; RAD/Section 18 blend for 48 public housing units.", source: plan_2027, quote: "The investor exited the partnership by December 2024"}
+  - {holding: wilmington-townhomes, text: "Investor exited by July 2025, replaced by Mercy Housing. Resyndication and RAD/Section 18 blend for 46 public housing units.", source: plan_2027, quote: "The investor exited the partnership by July 2025"}
+  - {holding: william-mead-homes, text: "Proposed 17.9-acre redevelopment, up to three times the existing units (up to 1,600), up to 456 Restore Rebuild vouchers; Section 18 sequenced blend planned.", source: plan_2027, quote: "HACLA is proposing to utilize up to 456 Restore Rebuild vouchers"}
+  - {holding: rancho-san-pedro, text: "One San Pedro: 478 homes to up to 1,600 mixed-income homes, up to 299 Restore Rebuild units; disposition to a HACLA instrumentality under a Section 18 sequenced blend.", source: plan_2027, quote: "HACLA is proposing to utilize up to"}
+  - {holding: jordan-downs-legacy, text: "Master developer team: The Michaels Organization and BRIDGE Housing (2012). One-for-one replacement of 700 units with up to 1,800 new homes; 21-acre adjacent site purchased in 2008.", source: plan_2027, quote: "HACLA selected a Master Developer partner comprised of The Michaels"}
+  - {holding: the-maida-apartments, text: "Eight accessible units completed.", source: midyear_2026, quote: "Completion of accessible units at The Collection (6) and Maida Apartments (8)"}
+  - {holding: the-collection, text: "Six accessible units completed.", source: midyear_2026, quote: "Completion of accessible units at The Collection (6) and Maida Apartments (8)"}
+  - {holding: emerald-apartments, text: "Six ADUs built on a live/work model.", source: midyear_2026, quote: "Six ADUs constructed at Emerald Apartments under a live/work model"}
+  - {holding: owensmouth-gardens, text: "Multifamily Service Coordinator grant site, with enhanced resident services.", source: budget_2026, quote: "including Owensmouth Gardens, Reseda East, Las Palmas Gardens, and Union Towers"}
+  - {holding: reseda-east, text: "Multifamily Service Coordinator grant site, with enhanced resident services.", source: budget_2026, quote: "including Owensmouth Gardens, Reseda East, Las Palmas Gardens, and Union Towers"}
+  - {holding: las-palmas-gardens, text: "Multifamily Service Coordinator grant site, with enhanced resident services.", source: budget_2026, quote: "including Owensmouth Gardens, Reseda East, Las Palmas Gardens, and Union Towers"}
+  - {holding: union-tower, text: "Multifamily Service Coordinator grant site, with enhanced resident services.", source: budget_2026, quote: "including Owensmouth Gardens, Reseda East, Las Palmas Gardens, and Union Towers"}
+
+issues:
+  - {holding: emerald-apartments, field: units, text: "154 on the Mar 2026 list and in the press release; 160 in board reports, RAD page and Agency Plan (6 ADUs added). Database uses 160.", source: boc_emerald}
+  - {holding: emerald-apartments, field: address, text: "List gives 214 W. 14th; all other sources give 215 W. 14th. Database uses 215.", source: all_properties}
+  - {holding: lafayette-park, field: units, text: "List row is misaligned (Total 0, 0BR 119). FY2024 audit says 120 units. Database uses 120.", source: audit_2024}
+  - {holding: dana-street-apartments, field: program, text: "Asset Management list calls this 'Market Rate'; HUD lists 10 ACC units as CA004000427 'DANA APTS/SEC 23/TKY III'. Treated as public housing with the conflict flagged.", source: hud_dev}
+  - {holding: yosemite-apartments, field: program, text: "List labels this 'Public Housing / Affordable', but the audit shows it bought with a CalHFA note like the five other 'Bond' senior properties, and it has no separate HUD development record.", source: all_properties}
+  - {holding: apperson-apartments, field: zip, text: "List gives ZIP 91042 and city Los Angeles; 7418 Apperson St is in Tujunga.", source: all_properties}
+  - {holding: glenalbyn-apartments, field: zip, text: "List gives ZIP 90064; vacancy sheet gives 90065, which matches Mount Washington.", source: vacancy}
+  - {holding: jordan-scattered, field: address, text: "List row '1415 East 109th St' gives street address 1415 East 115th Street; '11236 Hooper Ave' gives 11237 South Hooper.", source: all_properties}
+  - {holding: the-argent-apartments, field: address, text: "Audit calls this '7369 Van Nuys' in its debt table and 7639 in the narrative. 7639 is correct.", source: audit_2024}
+  - {holding: crenshaw-crossing-east, field: units, text: "Mid-year report shows 401 units for Crenshaw Crossing (whole site); CTCAC shows 176 for the East phase.", source: midyear_2026}
+  - {field: ownership, text: "HACLA publishes property lists for New Vision and HOC, which reconcile exactly, but names only three of LOMOD South's properties. The other list properties are assigned to LOMOD South by elimination and marked inferred. Autumn Court is excluded; HACLA counts it separately pending transfer. Without Rosslyn Lofts, bought after the March 2026 count, the LOMOD South total comes to 77 properties and 1,599 units, against 77 and 1,600 published.", source: midyear_2026}
+  - {field: portfolio_total, text: "Unit totals vary with scope: 148 properties/7,051 units (instrumentalities, Mar 2026), 13 public housing sites/6,000+ families and 160 affordable and mixed-income properties (Jan 2026 fact sheet), 6,084 ACC units (2027 Agency Plan).", source: midyear_2026}
+  - {field: property_manager, text: "The Mar 2026 list shows bellprop.com contacts, while the undated vacancy sheet shows 'AMC' and liveamc.com for many of the same properties. CTCAC lists Apartment Management Consultants LLC for Crescent Court. Bell may have been renamed or replaced; the Jun 2026 report still says Bell.", source: vacancy}
